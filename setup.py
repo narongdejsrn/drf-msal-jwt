@@ -31,8 +31,8 @@ if sys.argv[-1] == 'publish':
     except ImportError:
         print('Wheel library missing. Please run "pip install wheel"')
         sys.exit()
-    os.system('python setup.py sdist upload')
-    os.system('python setup.py bdist_wheel upload')
+    os.system('python setup.py sdist bdist_wheel')
+    os.system('twine upload dist/*')
     sys.exit()
 
 if sys.argv[-1] == 'tag':
@@ -56,7 +56,10 @@ setup(
         'drf_msal_jwt',
     ],
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        'msal>=1.1.0',
+        'requests>=2.23.0'
+    ],
     license="MIT",
     zip_safe=False,
     keywords='drf-msal-jwt',

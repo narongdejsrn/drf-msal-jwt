@@ -1,5 +1,5 @@
 =============================
-Django Rest Framework MSAL + JWT
+Django Rest Framework MSAL
 =============================
 
 .. image:: https://badge.fury.io/py/drf-msal-jwt.svg
