@@ -4,6 +4,7 @@ import msal
 import requests
 from django.utils.crypto import get_random_string
 
+from .exceptions import DomainException
 from .settings import api_settings
 from rest_framework_jwt.settings import api_settings as jwt_api_settings
 
@@ -65,6 +66,7 @@ def build_auth_url(scopes=None, state=None):
 def get_user_jwt_token(code, scopes=None):
     msal_redirect_url = api_settings.MSAL_REDIRECT_URL
     msal_scopes = api_settings.MSAL_SCOPES
+    msal_allow_domains = api_settings.MSAL_ALLOW_DOMAINS
 
     User = api_settings.MSAL_USER_HANDLER;
 
@@ -75,6 +77,12 @@ def get_user_jwt_token(code, scopes=None):
     )
 
     microsoft_info = get_microsoft_info(tokens['access_token'])
+
+    # check allow domains
+    if not '*' in msal_allow_domains:
+        if microsoft_info['mail'].split('@')[1] not in msal_allow_domains:
+            raise DomainException()
+
     user = get_user_by_email(microsoft_info['mail'])
     if not user:
         # User not found in the system, we should create a new user
