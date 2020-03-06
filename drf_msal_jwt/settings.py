@@ -9,9 +9,12 @@ DEFAULTS = {
     'MSAL_AUTHORITY_URL': 'https://login.microsoftonline.com/common/',
     'MSAL_REDIRECT_URL': None,
     'MSAL_OPENID_CONFIG': 'https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
-    'MSAL_SCOPES': ["User.ReadBasic.All"]
+    'MSAL_SCOPES': ["User.ReadBasic.All"],
+    'MSAL_USER_HANDLER': 'django.contrib.auth.models.User'
 }
 
-IMPORT_STRINGS = None
+IMPORT_STRINGS = (
+    'MSAL_USER_HANDLER'
+)
 
 api_settings = APISettings(USER_SETTINGS, DEFAULTS, IMPORT_STRINGS)

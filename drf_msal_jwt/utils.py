@@ -6,7 +6,6 @@ from django.utils.crypto import get_random_string
 
 from .settings import api_settings
 from rest_framework_jwt.settings import api_settings as jwt_api_settings
-from django.contrib.auth.models import User
 
 
 def get_msal_public_app():
@@ -95,6 +94,9 @@ def get_microsoft_info(access_token):
 
 
 def get_user_by_email(email):
+
+    User = api_settings.MSAL_USER_HANDLER;
+
     user = User.objects.filter(is_active=True, email=email)
     if not user:
         return None
