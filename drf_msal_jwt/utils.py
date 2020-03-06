@@ -66,6 +66,8 @@ def get_user_jwt_token(code, scopes=None):
     msal_redirect_url = api_settings.MSAL_REDIRECT_URL
     msal_scopes = api_settings.MSAL_SCOPES
 
+    User = api_settings.MSAL_USER_HANDLER;
+
     tokens = get_msal_confidential_app().acquire_token_by_authorization_code(
         code,
         scopes or msal_scopes,
