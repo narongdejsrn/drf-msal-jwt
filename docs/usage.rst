@@ -2,13 +2,14 @@
 Usage
 =====
 
+
 To use Django Rest Framework MSAL + JWT in a project, add it to your `INSTALLED_APPS`:
 
 .. code-block:: python
 
     INSTALLED_APPS = (
         ...
-        'drf_msal_jwt.apps.DrfMsalJwtConfig',
+        'drf_msal_jwt',
         ...
     )
 

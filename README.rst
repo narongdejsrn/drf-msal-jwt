@@ -11,7 +11,12 @@ Django Rest Framework MSAL + JWT
 .. image:: https://codecov.io/gh/narongdejsrn/drf-msal-jwt/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/narongdejsrn/drf-msal-jwt
 
-This library allows user to authenticate using Microsoft Account in Django Rest Framework
+This package allows user to authenticate using Microsoft Account in Django REST Framework.
+
+This library rely on `Django REST Framework <https://www.django-rest-framework.org/>`_ and `Django Rest Framework JWT <https://github.com/jpadilla/django-rest-framework-jwt>`_ to works properly.
+**Please make sure you setup these packages successfully before using this package.**
+
+
 
 Documentation
 -------------
@@ -20,9 +25,6 @@ The full documentation is at https://drf-msal-jwt.readthedocs.io.
 
 Quickstart
 ----------
-
-This library rely on `Django REST Framework <https://www.django-rest-framework.org/>`_ and `Django Rest Framework JWT <https://github.com/jpadilla/django-rest-framework-jwt>`_ to works properly.
-**Please make sure you setup these packages successfully before using this package.**
 
 Install Django Rest Framework MSAL + JWT::
 
@@ -51,11 +53,25 @@ Add Django Rest Framework MSAL + JWT's URL patterns:
         ...
     ]
 
+Config the settings.py
+
+.. code-block:: python
+
+    DEFAULTS = {
+        'MSAL_CLIENT_ID': "{AZURE_AD_CLIENT_ID}",
+        'MSAL_CLIENT_SECRET': "{AZURE_AD_CLIENT_SECRET}",
+        'MSAL_AUTHORITY_URL': 'https://login.microsoftonline.com/common/',
+        'MSAL_REDIRECT_URL': "{AZURE_AD_REDIRECT_URL}",
+        'MSAL_SCOPES': ["User.ReadBasic.All"],
+        'MSAL_USER_HANDLER': 'django.contrib.auth.models.User',
+        'MSAL_ALLOW_DOMAINS': ['*']
+    }
+
 Features
 --------
 
-* Generate login url for authentication using Microsoft Account
-* Create new user based on Authorization code and generate JWT token for the user to log in
+* [API] for generating Microsoft Login URL
+* [API] for logging/creating user based on Authorization Code, and generate JWT token
 
 Running Tests
 -------------
