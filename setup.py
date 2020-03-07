@@ -42,13 +42,12 @@ if sys.argv[-1] == 'tag':
     sys.exit()
 
 readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='drf-msal-jwt',
     version=version,
     description="""Connect Django Rest Framework with MSAL and JWT""",
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
     author='Narongdej Sarnsuwan',
     author_email='narongdej@sarnsuwan.com',
     url='https://github.com/narongdejsrn/drf-msal-jwt',
