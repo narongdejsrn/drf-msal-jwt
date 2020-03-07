@@ -129,6 +129,5 @@ DRF_MSAL = {
     'MSAL_CLIENT_SECRET': 'BZDc/1Z2PWZlQQp8B=U[NT5fc/ziBHXK',
     'MSAL_AUTHORITY_URL': 'https://login.microsoftonline.com/common/',
     'MSAL_REDIRECT_URL': os.getenv('MSAL_REDIRECT_URL', 'http://localhost:8080/callback'),
-    'MSAL_OPENID_CONFIG': 'https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
     'MSAL_SCOPES': ["User.ReadBasic.All"]
 }
