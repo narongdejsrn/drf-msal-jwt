@@ -29,7 +29,8 @@ If you already register then config the settings.py in your app accordingly
         'MSAL_AUTHORITY_URL': 'https://login.microsoftonline.com/common/',
         'MSAL_SCOPES': ["User.ReadBasic.All"],
         'MSAL_USER_HANDLER': 'django.contrib.auth.models.User',
-        'MSAL_ALLOW_DOMAINS': ['*']
+        'MSAL_ALLOW_DOMAINS': ['*'],
+        'MSAL_CHECK_STATE': True
     }
 
 - MSAL_CLIENT_ID: Your app Client ID
@@ -38,6 +39,7 @@ If you already register then config the settings.py in your app accordingly
 - MSAL_AUTHORITY_URL (optional): Your app `authority URL <https://docs.microsoft.com/bs-latn-ba/azure/active-directory/develop/msal-client-application-configuration>`_
 - MSAL_SCOPES (optional): scope that you request from the user (User.ReadBasic.All) currently required
 - MSAL_ALLOW_DOMAINS (optional): Limit the domain that the user can use to sign in, * to allows all domains
+- MSAL_CHECK_STATE (optional): Check state using session
 
     Be sure configured permission in azure portal according to permission request in MSAL_SCOPES variable.
 

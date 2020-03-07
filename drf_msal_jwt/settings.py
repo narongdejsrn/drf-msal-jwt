@@ -10,7 +10,8 @@ DEFAULTS = {
     'MSAL_REDIRECT_URL': None,
     'MSAL_SCOPES': ["User.ReadBasic.All"],
     'MSAL_USER_HANDLER': 'django.contrib.auth.models.User',
-    'MSAL_ALLOW_DOMAINS': ['*']
+    'MSAL_ALLOW_DOMAINS': ['*'],
+    'MSAL_CHECK_STATE': True
 }
 
 IMPORT_STRINGS = (

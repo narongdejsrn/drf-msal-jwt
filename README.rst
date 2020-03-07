@@ -64,7 +64,8 @@ Config the settings.py
         'MSAL_REDIRECT_URL': "{AZURE_AD_REDIRECT_URL}",
         'MSAL_SCOPES': ["User.ReadBasic.All"],
         'MSAL_USER_HANDLER': 'django.contrib.auth.models.User',
-        'MSAL_ALLOW_DOMAINS': ['*']
+        'MSAL_ALLOW_DOMAINS': ['*'],
+        'MSAL_CHECK_STATE': True
     }
 
 Features
