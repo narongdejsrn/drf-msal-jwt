@@ -1,6 +1,5 @@
 include AUTHORS.rst
 include CONTRIBUTING.rst
-include HISTORY.rst
 include LICENSE
 include README.rst
 recursive-include drf_msal_jwt *.html *.png *.gif *js *.css *jpg *jpeg *svg *py

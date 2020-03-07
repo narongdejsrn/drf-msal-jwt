@@ -4,7 +4,7 @@ import msal
 import requests
 from django.utils.crypto import get_random_string
 
-from .exceptions import DomainException
+from .exceptions import DomainException, WrongTokenException
 from .settings import api_settings
 from rest_framework_jwt.settings import api_settings as jwt_api_settings
 
@@ -68,15 +68,17 @@ def get_user_jwt_token(code, scopes=None):
     msal_scopes = api_settings.MSAL_SCOPES
     msal_allow_domains = api_settings.MSAL_ALLOW_DOMAINS
 
-    User = api_settings.MSAL_USER_HANDLER;
-
+    User = api_settings.MSAL_USER_HANDLER
     tokens = get_msal_confidential_app().acquire_token_by_authorization_code(
         code,
         scopes or msal_scopes,
         redirect_uri=msal_redirect_url
     )
 
-    microsoft_info = get_microsoft_info(tokens['access_token'])
+    try:
+        microsoft_info = get_microsoft_info(tokens['access_token'])
+    except KeyError:
+        raise WrongTokenException()
 
     # check allow domains
     if not '*' in msal_allow_domains:
@@ -104,9 +106,7 @@ def get_microsoft_info(access_token):
 
 
 def get_user_by_email(email):
-
-    User = api_settings.MSAL_USER_HANDLER;
-
+    User = api_settings.MSAL_USER_HANDLER
     user = User.objects.filter(is_active=True, email=email)
     if not user:
         return None

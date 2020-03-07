@@ -1,6 +1,6 @@
-=============================
-Django Rest Framework MSAL
-=============================
+==========================================================
+Django Rest Framework MSAL + JWT
+==========================================================
 
 .. image:: https://badge.fury.io/py/drf-msal-jwt.svg
     :target: https://badge.fury.io/py/drf-msal-jwt
@@ -11,7 +11,7 @@ Django Rest Framework MSAL
 .. image:: https://codecov.io/gh/narongdejsrn/drf-msal-jwt/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/narongdejsrn/drf-msal-jwt
 
-Connect Django Rest Framework with MSAL and JWT
+This library allows user to authenticate using Microsoft Account in Django Rest Framework
 
 Documentation
 -------------
@@ -20,6 +20,9 @@ The full documentation is at https://drf-msal-jwt.readthedocs.io.
 
 Quickstart
 ----------
+
+This library rely on `Django REST Framework <https://www.django-rest-framework.org/>`_ and `Django Rest Framework JWT <https://github.com/jpadilla/django-rest-framework-jwt>`_ to works properly.
+**Please make sure you setup these packages successfully before using this package.**
 
 Install Django Rest Framework MSAL + JWT::
 
@@ -31,7 +34,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'drf_msal_jwt.apps.DrfMsalJwtConfig',
+        'drf_msal_jwt',
         ...
     )
 
@@ -51,7 +54,8 @@ Add Django Rest Framework MSAL + JWT's URL patterns:
 Features
 --------
 
-* TODO
+* Generate login url for authentication using Microsoft Account
+* Create new user based on Authorization code and generate JWT token for the user to log in
 
 Running Tests
 -------------
@@ -63,14 +67,3 @@ Does the code actually work?
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install tox
     (myenv) $ tox
-
-Credits
--------
-
-Tools used in rendering this package:
-
-*  Cookiecutter_
-*  `cookiecutter-djangopackage`_
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage

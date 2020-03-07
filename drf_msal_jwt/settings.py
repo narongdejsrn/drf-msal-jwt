@@ -8,7 +8,6 @@ DEFAULTS = {
     'MSAL_CLIENT_SECRET': None,
     'MSAL_AUTHORITY_URL': 'https://login.microsoftonline.com/common/',
     'MSAL_REDIRECT_URL': None,
-    'MSAL_OPENID_CONFIG': 'https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
     'MSAL_SCOPES': ["User.ReadBasic.All"],
     'MSAL_USER_HANDLER': 'django.contrib.auth.models.User',
     'MSAL_ALLOW_DOMAINS': ['*']

@@ -32,8 +32,6 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'drf_msal_jwt',
-    'drf_msal_jwt.test_utils.test_app'
-
 
     # if your app has other dependencies that need to be added to the site
     # they should be added here
@@ -123,4 +121,14 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+}
+
+
+DRF_MSAL = {
+    'MSAL_CLIENT_ID': 'a3c49029-1565-4dd5-9320-43f1d8a35b4e',
+    'MSAL_CLIENT_SECRET': 'BZDc/1Z2PWZlQQp8B=U[NT5fc/ziBHXK',
+    'MSAL_AUTHORITY_URL': 'https://login.microsoftonline.com/common/',
+    'MSAL_REDIRECT_URL': os.getenv('MSAL_REDIRECT_URL', 'http://localhost:8080/callback'),
+    'MSAL_OPENID_CONFIG': 'https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
+    'MSAL_SCOPES': ["User.ReadBasic.All"]
 }
