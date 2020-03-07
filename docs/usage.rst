@@ -56,7 +56,10 @@ Add Django Rest Framework MSAL + JWT's URL patterns:
 
 Finally, your client can connect to the backend using these url
 
-Get Login URL
+MSAL
+~~~~~~~~
+
+MSAL Get Login URL
 +++++++++++++
 
 .. http:get:: /msal/login_url
@@ -71,7 +74,7 @@ Get Login URL
             "login_url": "https://login.microsoftonline.com/...."
         }
 
-Login using Code
+MSAL Login using Code
 +++++++++++++
 
 .. http:post:: /msal/login_with_code
