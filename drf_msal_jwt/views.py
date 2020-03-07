@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 
 from drf_msal_jwt.exceptions import StateException
 from drf_msal_jwt.serializer import CodeSerializer
-from drf_msal_jwt.settings import api_settings
+from .settings import api_settings
 from drf_msal_jwt.utils import build_auth_url, get_user_jwt_token
 
 
@@ -28,9 +28,9 @@ class MSALLoginWithCodeView(APIView):
 
     authentication_classes = []
     permission_classes = []
-    msal_check_state = api_settings.MSAL_CHECK_STATE
 
     def post(self, request, format=None):
+        msal_check_state = api_settings.MSAL_CHECK_STATE
         code_serialized = CodeSerializer(request.data)
 
         if msal_check_state and request.session.get('msal_state', '') != code_serialized.data['state']:
