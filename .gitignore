@@ -47,3 +47,4 @@ output/*/index.html
 docs/_build
 
 *.sqlite3
+.DS_Store
