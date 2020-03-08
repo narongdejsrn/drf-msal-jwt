@@ -4,7 +4,7 @@ flake8>=2.1.0
 tox>=1.7.0
 codecov>=2.0.0
 djangorestframework>=3.11.0
-djangorestframework-jwt>=1.11.0
+drf-jwt>=1.15.0
 
 
 # Additional test requirements go here

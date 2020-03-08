@@ -13,7 +13,7 @@ Django Rest Framework MSAL + JWT
 
 This package allows user to authenticate using Microsoft Account in Django REST Framework.
 
-This library rely on `Django REST Framework <https://www.django-rest-framework.org/>`_ and `Django Rest Framework JWT <https://github.com/jpadilla/django-rest-framework-jwt>`_ to works properly.
+This library rely on `Django REST Framework <https://www.django-rest-framework.org/>`_ and `Django Rest Framework JWT <https://github.com/Styria-Digital/django-rest-framework-jwt>`_ to works properly.
 **Please make sure you setup these packages successfully before using this package.**
 
 
