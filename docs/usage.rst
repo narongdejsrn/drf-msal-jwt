@@ -62,9 +62,11 @@ Finally, your client can connect to the backend using these url
 Get Login URL
 +++++++++++++
 
-.. http:get:: /msal/login_url
+.. http:get:: /msal/login_urls?state={state_uuid}
 
     Retrieve a login url
+
+    If ``state_uuid`` is set, then it will generate login_url with given state instead. You can leave it blank, and the app will generate a random uuid
 
     **Example response**:
 

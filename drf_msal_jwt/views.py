@@ -15,9 +15,7 @@ class MSALLoginView(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        # Create session by uuid
-        state = str(uuid.uuid4())
-        request.session['msal_state'] = state
+        request.session['msal_state'] = state = request.GET.get('state', str(uuid.uuid4()))
 
         return Response({
             'login_url': build_auth_url(state=state)
