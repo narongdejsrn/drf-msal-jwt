@@ -1,4 +1,5 @@
 import uuid
+from datetime import datetime
 
 import msal
 import requests
@@ -93,6 +94,9 @@ def get_user_jwt_token(code, scopes=None):
                                         password=get_random_string(length=12),
                                         first_name=microsoft_info.get('givenName', ''),
                                         last_name=microsoft_info.get('surname', ''))
+    user.last_login = datetime.now()
+    user.save()
+
     jwt_payload_handler = jwt_api_settings.JWT_PAYLOAD_HANDLER
     jwt_encode_handler = jwt_api_settings.JWT_ENCODE_HANDLER
     payload = jwt_payload_handler(user)
