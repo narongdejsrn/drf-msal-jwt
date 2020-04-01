@@ -3,6 +3,7 @@ from datetime import datetime
 
 import msal
 import requests
+from django.utils import timezone
 from django.utils.crypto import get_random_string
 
 from .exceptions import DomainException, WrongTokenException
@@ -83,18 +84,22 @@ def get_user_jwt_token(code, scopes=None):
 
     # check allow domains
     if not '*' in msal_allow_domains:
-        if microsoft_info['mail'].split('@')[1] not in msal_allow_domains:
-            raise DomainException()
+        if microsoft_info['mail']:
+            if microsoft_info['mail'].split('@')[1] not in msal_allow_domains:
+                raise DomainException()
+        elif len(microsoft_info['userPrincipalName'].split('@')) == 2:  # this may not be secure
+            if microsoft_info['userPrincipalName'].split('@')[1] not in msal_allow_domains:
+                raise DomainException()
 
-    user = get_user_by_email(microsoft_info['mail'])
+    user = get_user_by_email(microsoft_info['mail'] or microsoft_info['userPrincipalName'])
     if not user:
         # User not found in the system, we should create a new user
         user = User.objects.create_user(username=tokens['id_token_claims']['preferred_username'],
-                                        email=microsoft_info['mail'],
+                                        email=microsoft_info['mail'] or microsoft_info['userPrincipalName'],
                                         password=get_random_string(length=12),
                                         first_name=microsoft_info.get('givenName', ''),
                                         last_name=microsoft_info.get('surname', ''))
-    user.last_login = datetime.now()
+    user.last_login = timezone.now()
     user.save()
 
     jwt_payload_handler = jwt_api_settings.JWT_PAYLOAD_HANDLER

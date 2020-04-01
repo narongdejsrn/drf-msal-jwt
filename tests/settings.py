@@ -127,8 +127,10 @@ REST_FRAMEWORK = {
 
 DRF_MSAL = {
     'MSAL_CLIENT_ID': 'a3c49029-1565-4dd5-9320-43f1d8a35b4e',
-    'MSAL_CLIENT_SECRET': 'BZDc/1Z2PWZlQQp8B=U[NT5fc/ziBHXK',
+    'MSAL_CLIENT_SECRET': '5L8HXsPPnsxBRZcst53[yAmtX@rwNd@_',
     'MSAL_AUTHORITY_URL': 'https://login.microsoftonline.com/common/',
     'MSAL_REDIRECT_URL': os.getenv('MSAL_REDIRECT_URL', 'http://localhost:8080/callback'),
-    'MSAL_SCOPES': ["User.ReadBasic.All"]
+    'MSAL_SCOPES': ["User.ReadBasic.All"],
+    'MSAL_CHECK_STATE': False,
+    'MSAL_ALLOW_DOMAINS': ['pttep.com', 'thegang.tech'],
 }
