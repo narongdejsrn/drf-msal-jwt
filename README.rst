@@ -84,3 +84,14 @@ Does the code actually work?
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install tox
     (myenv) $ tox
+
+
+Deployment
+-------------
+
+Bumb version & deploy
+
+::
+
+    bumpversion <major/minor/patch>
+    python setup.py publish
