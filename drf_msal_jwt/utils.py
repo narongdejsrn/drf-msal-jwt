@@ -61,7 +61,8 @@ def build_auth_url(scopes=None, state=None):
     return get_msal_public_app().get_authorization_request_url(
         scopes or msal_scopes,
         state=state or str(uuid.uuid4()),
-        redirect_uri=msal_redirect_url
+        redirect_uri=msal_redirect_url,
+        prompt="select_account"
     )
 
 
