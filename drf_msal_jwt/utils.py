@@ -117,8 +117,7 @@ def get_microsoft_info(access_token):
 
 def get_user_by_email(email):
     User = api_settings.MSAL_USER_HANDLER
-    user = User.objects.filter(is_active=True, email=email)
-    if not user:
+    try:
+        return User.objects.get(is_active=True, email__iexact=email)
+    except User.DoesNotExist:
         return None
-
-    return user[0]
